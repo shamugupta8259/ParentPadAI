@@ -1,7 +1,8 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Gamepad2, Wrench, Menu, Moon, Sun, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useTheme } from "@/hooks/use-theme";
 
 export function AdPlaceholder({ className, label = "Ad Space" }: { className?: string, label?: string }) {
   return (
@@ -12,16 +13,8 @@ export function AdPlaceholder({ className, label = "Ad Space" }: { className?: s
 }
 
 export function Navbar() {
-  const [isDark, setIsDark] = useState(false);
+  const { theme, setTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDark]);
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -48,10 +41,10 @@ export function Navbar() {
           <Button 
             variant="ghost" 
             size="icon" 
-            onClick={() => setIsDark(!isDark)}
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="rounded-full"
           >
-            {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
           
           <Button 

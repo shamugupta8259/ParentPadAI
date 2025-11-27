@@ -94,6 +94,9 @@ export function Game2048() {
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
+      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+        e.preventDefault();
+      }
       if (e.key === 'ArrowUp') move('up');
       if (e.key === 'ArrowDown') move('down');
       if (e.key === 'ArrowLeft') move('left');

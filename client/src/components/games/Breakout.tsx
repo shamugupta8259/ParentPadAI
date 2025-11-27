@@ -33,7 +33,7 @@ export function Breakout() {
   const rightPressed = useRef(false);
   const leftPressed = useRef(false);
   const bricks = useRef<Brick[][]>([]);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
 
   const initBricks = () => {
     const newBricks: Brick[][] = [];
@@ -153,12 +153,17 @@ export function Breakout() {
     if (isPlaying) {
       animationRef.current = requestAnimationFrame(draw);
     }
-    return () => cancelAnimationFrame(animationRef.current!);
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
   }, [isPlaying, draw]);
 
   // Controls
   useEffect(() => {
     const keyDownHandler = (e: KeyboardEvent) => {
+      if (['ArrowRight', 'ArrowLeft', 'Right', 'Left'].includes(e.key)) {
+        e.preventDefault();
+      }
       if (e.key === "Right" || e.key === "ArrowRight") rightPressed.current = true;
       else if (e.key === "Left" || e.key === "ArrowLeft") leftPressed.current = true;
     };

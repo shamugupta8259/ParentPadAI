@@ -20,7 +20,7 @@ export function FlappyBird() {
   const birdVelocity = useRef(0);
   const pipes = useRef<{x: number, height: number}[]>([]);
   const frameCount = useRef(0);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
 
   const resetGame = () => {
     birdY.current = 200;
@@ -129,7 +129,9 @@ export function FlappyBird() {
     if (isPlaying) {
       animationRef.current = requestAnimationFrame(gameLoop);
     }
-    return () => cancelAnimationFrame(animationRef.current!);
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
   }, [isPlaying, gameLoop]);
 
   // Click handler

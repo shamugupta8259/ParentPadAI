@@ -16,7 +16,7 @@ export function Snake() {
   const [score, setScore] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const requestRef = useRef<number>();
+  const requestRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number>(0);
 
   const generateFood = useCallback(() => {
@@ -77,12 +77,17 @@ export function Snake() {
     if (isPlaying && !gameOver) {
       requestRef.current = requestAnimationFrame(gameLoop);
     }
-    return () => cancelAnimationFrame(requestRef.current!);
+    return () => {
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+    };
   }, [isPlaying, gameOver, gameLoop]);
 
   // Input handling
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
+      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+        e.preventDefault();
+      }
       switch(e.key) {
         case 'ArrowUp': if (direction.y === 0) setDirection({ x: 0, y: -1 }); break;
         case 'ArrowDown': if (direction.y === 0) setDirection({ x: 0, y: 1 }); break;
