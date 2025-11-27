@@ -1,0 +1,133 @@
+I want you to create a complete Next.js website that contains 
+(1) a collection of mini-games and 
+(2) a collection of online tools.
+
+The website goal is to generate AdSense/Ezoic monetization, so it should be fast, SEO-friendly, mobile responsive, and highly optimized.
+
+-------------------------------------------
+🚀 PROJECT TYPE
+-------------------------------------------
+A "Mini Games + Online Tools" website built in Next.js.
+
+-------------------------------------------
+🎮 MINI GAMES (Create these 10)
+-------------------------------------------
+1. 2048 Game
+2. Flappy Bird (HTML/JS logic)
+3. Chrome Dino Game Clone
+4. Snake Game
+5. Tic Tac Toe
+6. Memory Match Game
+7. Rock Paper Scissors
+8. Simple Car Racing Game (2D)
+9. Bubble Shooter
+10. Breakout / Brick Breaker Game
+
+Each game should:
+- Be built using HTML5 Canvas + JavaScript inside Next.js components
+- Work on mobile and desktop
+- Be placed in /games/game-name
+- Have a dedicated page with SEO metadata
+
+-------------------------------------------
+🛠 TOOLS (Create these 15)
+-------------------------------------------
+TEXT TOOLS:
+1. Word Counter
+2. Character Counter
+3. Text Case Converter (upper/lower/camel)
+4. Remove Line Breaks Tool
+
+DEVELOPER TOOLS:
+5. JSON Formatter / Pretty Print
+6. Base64 Encoder/Decoder
+7. URL Encoder/Decoder
+8. UUID Generator
+9. JWT Decoder
+10. Regex Tester
+
+IMAGE TOOLS:
+11. PNG → JPG Converter
+12. Image Resizer (client-side)
+13. Image Compressor (client-side)
+
+CALCULATOR TOOLS:
+14. Age Calculator
+15. Percentage Calculator
+
+Each tool should:
+- Work on client-side using pure JS
+- Have clean UI + easy input/output sections
+- Live under /tools/tool-name
+- Include SEO metadata
+
+-------------------------------------------
+🧱 TECHNOLOGY REQUIREMENTS
+-------------------------------------------
+• Use Next.js App Router (latest)
+• TailwindCSS for styling
+• Components for header, footer, layout
+• Add dark mode toggle
+• Make everything mobile-friendly
+• Keep code clean and well-organized
+
+-------------------------------------------
+📄 SITE STRUCTURE
+-------------------------------------------
+/ (Home)
+/games (Games list)
+/games/[game-name] (Game page)
+/tools (Tools list)
+/tools/[tool-name] (Tool page)
+/contact
+/privacy-policy
+/terms
+
+Home page must show:
+- Trending games
+- Popular tools
+- Category sections
+
+-------------------------------------------
+📈 SEO REQUIREMENTS
+-------------------------------------------
+• Add metadata to each tool & game page
+• SEO-friendly URLs
+• Generate sitemap.xml & robots.txt
+• Fast page load
+• Add OpenGraph tags
+
+-------------------------------------------
+💰 MONETIZATION SETUP
+-------------------------------------------
+Add placeholders where I can insert:
+- Google AdSense ads (banner + in-article)
+- Ezoic ad placeholders
+
+-------------------------------------------
+🎨 UI REQUIREMENTS
+-------------------------------------------
+• Simple, clean, modern UI
+• Card-based grid design for games/tools
+• Sticky navbar
+• Footer with links
+• Light & dark mode
+
+-------------------------------------------
+🔥 DELIVERY FORMAT
+-------------------------------------------
+Provide:
+1. Complete folder structure
+2. All component files
+3. All game logic code
+4. All tool logic code
+5. Home page UI
+6. Games list page UI
+7. Tools list page UI
+8. Every tool page
+9. Every game page
+10. Instructions for running locally and deploying
+
+-------------------------------------------
+END OF PROMPT
+-------------------------------------------

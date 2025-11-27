@@ -1,77 +1,118 @@
-import { Navbar } from "@/components/layout/Navbar";
-import { Hero } from "@/components/home/Hero";
-import { ListingCard } from "@/components/home/ListingCard";
-import { NestBot } from "@/components/ai/NestBot";
-import { MOCK_LISTINGS, POPULAR_SEARCHES } from "@/lib/mockData";
+import { Layout, AdPlaceholder } from "@/components/layout/MainLayout";
+import { GAMES, TOOLS } from "@/data/content";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { SlidersHorizontal, Map as MapIcon } from "lucide-react";
-import { motion } from "framer-motion";
+import { Link } from "wouter";
+import { ArrowRight, Star, Flame } from "lucide-react";
 
 export default function Home() {
+  const featuredGames = GAMES.filter(g => g.isPopular).slice(0, 4);
+  const featuredTools = TOOLS.filter(t => t.isPopular).slice(0, 4);
+
   return (
-    <div className="min-h-screen bg-background pb-20">
-      <Navbar />
-      <Hero />
-      
-      <main className="container mx-auto px-4 -mt-10 relative z-20">
-        {/* Filter Bar */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="bg-white p-4 rounded-xl shadow-lg border border-border/50 mb-10 flex flex-col lg:flex-row gap-4 items-center justify-between"
-        >
-          <div className="flex items-center gap-2 w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0 no-scrollbar">
-            <span className="text-sm font-bold text-muted-foreground whitespace-nowrap mr-2">Quick Filters:</span>
-            {POPULAR_SEARCHES.map((term) => (
-              <Button 
-                key={term} 
-                variant="outline" 
-                size="sm" 
-                className="rounded-full text-xs sm:text-sm whitespace-nowrap hover:border-primary hover:text-primary bg-slate-50"
-              >
-                {term}
+    <Layout>
+      {/* Hero Section */}
+      <section className="py-12 md:py-20 px-4 text-center bg-gradient-to-b from-muted/50 to-background border-b">
+        <div className="container mx-auto max-w-4xl">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
+            Play Games. <span className="text-primary/80">Fix Data.</span> <br className="hidden sm:inline" />
+            All in One Place.
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            A collection of addictive mini-games and essential online tools for developers, writers, and students.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/games">
+              <Button size="lg" className="w-full sm:w-auto h-12 px-8 text-base">
+                Play Games
               </Button>
-            ))}
-          </div>
-          
-          <div className="flex items-center gap-3 w-full lg:w-auto shrink-0">
-            <Button variant="outline" className="flex-1 lg:flex-none gap-2">
-              <MapIcon className="h-4 w-4" />
-              Map View
-            </Button>
-            <Button variant="outline" className="flex-1 lg:flex-none gap-2 border-dashed">
-              <SlidersHorizontal className="h-4 w-4" />
-              All Filters
-            </Button>
-          </div>
-        </motion.div>
-
-        {/* Listings Grid */}
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-foreground">Featured Homes for You</h2>
-            <p className="text-sm text-muted-foreground hidden sm:block">
-              Showing 3 matches based on your family profile
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {MOCK_LISTINGS.map((listing, index) => (
-              <motion.div
-                key={listing.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + (index * 0.1) }}
-              >
-                <ListingCard listing={listing} />
-              </motion.div>
-            ))}
+            </Link>
+            <Link href="/tools">
+              <Button size="lg" variant="outline" className="w-full sm:w-auto h-12 px-8 text-base">
+                Use Tools
+              </Button>
+            </Link>
           </div>
         </div>
-      </main>
+      </section>
 
-      <NestBot />
-    </div>
+      <div className="container mx-auto px-4 py-12 space-y-16">
+        {/* Ad Space */}
+        <AdPlaceholder className="h-[120px] w-full max-w-4xl mx-auto" label="Top Banner Ad" />
+
+        {/* Featured Games */}
+        <section>
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-2">
+              <div className="p-2 bg-orange-100 dark:bg-orange-900/20 rounded-lg text-orange-600 dark:text-orange-400">
+                <Flame className="h-6 w-6" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold">Trending Games</h2>
+            </div>
+            <Link href="/games">
+              <Button variant="ghost" className="gap-2">
+                View All <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredGames.map((game) => (
+              <Link key={game.id} href={game.path}>
+                <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer border-muted/60">
+                  <CardHeader>
+                    <div className="mb-2 w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
+                      <game.icon className="h-6 w-6" />
+                    </div>
+                    <CardTitle>{game.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>{game.description}</CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Featured Tools */}
+        <section>
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-2">
+              <div className="p-2 bg-blue-100 dark:bg-blue-900/20 rounded-lg text-blue-600 dark:text-blue-400">
+                <Star className="h-6 w-6" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold">Popular Tools</h2>
+            </div>
+            <Link href="/tools">
+              <Button variant="ghost" className="gap-2">
+                View All <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredTools.map((tool) => (
+              <Link key={tool.id} href={tool.path}>
+                <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer border-muted/60">
+                  <CardHeader>
+                    <div className="mb-2 w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-secondary-foreground">
+                      <tool.icon className="h-6 w-6" />
+                    </div>
+                    <CardTitle>{tool.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>{tool.description}</CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Ad Space */}
+        <AdPlaceholder className="h-[250px] w-full max-w-3xl mx-auto" label="Large Rectangle Ad" />
+      </div>
+    </Layout>
   );
 }
