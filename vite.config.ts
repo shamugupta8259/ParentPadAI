@@ -5,7 +5,11 @@ import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import { metaImagesPlugin } from "./vite-plugin-meta-images";
 
+const rootDir = path.resolve(import.meta.dirname, "client");
+
 export default defineConfig({
+  root: rootDir,
+
   plugins: [
     react(),
     runtimeErrorOverlay(),
@@ -23,23 +27,26 @@ export default defineConfig({
         ]
       : []),
   ],
+
   resolve: {
     alias: {
-      "@": path.resolve(import.meta.dirname, "client/src"),
+      "@": path.resolve(rootDir, "src"),
       "@shared": path.resolve(import.meta.dirname, "shared"),
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
   },
+
   css: {
     postcss: {
       plugins: [],
     },
   },
-  root: path.resolve(import.meta.dirname, "client"),
+
   build: {
-    outDir: path.resolve(import.meta.dirname, "client/dist"),
+    outDir: path.resolve(rootDir, "dist"),
     emptyOutDir: true,
   },
+
   server: {
     host: "0.0.0.0",
     allowedHosts: true,
