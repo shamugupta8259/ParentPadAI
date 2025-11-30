@@ -1,21 +1,26 @@
-import { 
-  Gamepad2, 
-  Wrench, 
-  Type, 
-  Code2, 
-  Image as ImageIcon, 
-  Calculator, 
-  Clock, 
+import {
+  Gamepad2,
+  Wrench,
+  Type,
+  Code2,
+  Image as ImageIcon,
+  Calculator,
+  Clock,
   Search,
   Scissors,
   Grid3X3,
   Ghost,
   Car,
   CircleDot,
-  Layers
+  Layers,
 } from "lucide-react";
 
-export type Category = "game" | "tool-text" | "tool-dev" | "tool-image" | "tool-calc";
+export type Category =
+  | "game"
+  | "tool-text"
+  | "tool-dev"
+  | "tool-image"
+  | "tool-calc";
 
 export interface Item {
   id: string;
@@ -36,7 +41,7 @@ export const GAMES: Item[] = [
     category: "game",
     icon: Grid3X3,
     path: "/games/2048",
-    isPopular: true
+    isPopular: true,
   },
   {
     id: "flappy-bird",
@@ -45,7 +50,7 @@ export const GAMES: Item[] = [
     category: "game",
     icon: Ghost,
     path: "/games/flappy-bird",
-    isPopular: true
+    isPopular: true,
   },
   {
     id: "snake",
@@ -53,7 +58,7 @@ export const GAMES: Item[] = [
     description: "Eat food, grow longer, don't hit the wall.",
     category: "game",
     icon: Gamepad2,
-    path: "/games/snake"
+    path: "/games/snake",
   },
   {
     id: "tic-tac-toe",
@@ -61,7 +66,7 @@ export const GAMES: Item[] = [
     description: "Classic X and O game against AI.",
     category: "game",
     icon: CircleDot,
-    path: "/games/tic-tac-toe"
+    path: "/games/tic-tac-toe",
   },
   {
     id: "memory-match",
@@ -69,7 +74,7 @@ export const GAMES: Item[] = [
     description: "Test your memory by matching pairs.",
     category: "game",
     icon: Layers,
-    path: "/games/memory-match"
+    path: "/games/memory-match",
   },
   {
     id: "rock-paper-scissors",
@@ -77,7 +82,7 @@ export const GAMES: Item[] = [
     description: "Beat the computer in this classic.",
     category: "game",
     icon: Scissors,
-    path: "/games/rock-paper-scissors"
+    path: "/games/rock-paper-scissors",
   },
   {
     id: "breakout",
@@ -85,7 +90,7 @@ export const GAMES: Item[] = [
     description: "Smash all the bricks with the ball.",
     category: "game",
     icon: Grid3X3,
-    path: "/games/breakout"
+    path: "/games/breakout",
   },
   {
     id: "chrome-dino",
@@ -93,7 +98,7 @@ export const GAMES: Item[] = [
     description: "The classic offline runner game.",
     category: "game",
     icon: Ghost, // Placeholder
-    path: "/games/chrome-dino"
+    path: "/games/chrome-dino",
   },
   {
     id: "car-racing",
@@ -101,7 +106,7 @@ export const GAMES: Item[] = [
     description: "Dodge traffic in this 2D racer.",
     category: "game",
     icon: Car,
-    path: "/games/car-racing"
+    path: "/games/car-racing",
   },
   {
     id: "bubble-shooter",
@@ -109,8 +114,76 @@ export const GAMES: Item[] = [
     description: "Match 3 bubbles to pop them.",
     category: "game",
     icon: CircleDot,
-    path: "/games/bubble-shooter"
-  }
+    path: "/games/bubble-shooter",
+  },
+  {
+    id: "tetris",
+    title: "Tetris",
+    description: "Stack blocks and clear lines in this classic puzzle game.",
+    category: "game",
+    icon: Grid3X3,
+    path: "/games/tetris",
+    isPopular: true,
+  },
+  {
+    id: "sudoku",
+    title: "Sudoku",
+    description: "Fill the grid so every row, column, and box contains 1-9.",
+    category: "game",
+    icon: Grid3X3,
+    path: "/games/sudoku",
+    isPopular: true,
+  },
+  {
+    id: "chess",
+    title: "Chess",
+    description: "Play chess against AI or a friend.",
+    category: "game",
+    icon: Layers,
+    path: "/games/chess",
+    isPopular: true,
+  },
+  {
+    id: "stackTower",
+    title: "StackTower",
+    description: "Stack the blocks as high as you can without toppling.",
+    category: "game",
+    icon: Grid3X3,
+    path: "/games/stackTower",
+  },
+  {
+    id: "wordle",
+    title: "Wordle",
+    description: "Guess the word in 6 tries.",
+    category: "game",
+    icon: Type,
+    path: "/games/wordle",
+    isPopular: true,
+  },
+  {
+    id: "tic-tac-toe-2p",
+    title: "Tic Tac Toe (2P)",
+    description: "Classic X and O game for two players.",
+    category: "game",
+    icon: CircleDot,
+    path: "/games/tic-tac-toe-2p",
+  },
+  {
+    id: "solitaire",
+    title: "Solitaire",
+    description: "Classic card game.",
+    category: "game",
+    icon: Layers,
+    path: "/games/solitaire",
+  },
+  {
+    id: "connect-four",
+    title: "Connect Four",
+    description: "Connect four discs in a row to win.",
+    category: "game",
+    icon: Grid3X3,
+    path: "/games/connect-four",
+  },
 ];
 
 export const TOOLS: Item[] = [
@@ -122,7 +195,7 @@ export const TOOLS: Item[] = [
     category: "tool-text",
     icon: Type,
     path: "/tools/word-counter",
-    isPopular: true
+    isPopular: true,
   },
   {
     id: "character-counter",
@@ -130,7 +203,7 @@ export const TOOLS: Item[] = [
     description: "Real-time character frequency analysis.",
     category: "tool-text",
     icon: Type,
-    path: "/tools/character-counter"
+    path: "/tools/character-counter",
   },
   {
     id: "case-converter",
@@ -138,7 +211,7 @@ export const TOOLS: Item[] = [
     description: "UPPERCASE, lowercase, camelCase, and more.",
     category: "tool-text",
     icon: Type,
-    path: "/tools/case-converter"
+    path: "/tools/case-converter",
   },
   {
     id: "remove-line-breaks",
@@ -146,9 +219,9 @@ export const TOOLS: Item[] = [
     description: "Clean up messy text formatting.",
     category: "tool-text",
     icon: Type,
-    path: "/tools/remove-line-breaks"
+    path: "/tools/remove-line-breaks",
   },
-  
+
   // Dev Tools
   {
     id: "json-formatter",
@@ -157,7 +230,7 @@ export const TOOLS: Item[] = [
     category: "tool-dev",
     icon: Code2,
     path: "/tools/json-formatter",
-    isPopular: true
+    isPopular: true,
   },
   {
     id: "base64",
@@ -165,7 +238,7 @@ export const TOOLS: Item[] = [
     description: "Encode and decode Base64 strings.",
     category: "tool-dev",
     icon: Code2,
-    path: "/tools/base64"
+    path: "/tools/base64",
   },
   {
     id: "url-encoder",
@@ -173,7 +246,7 @@ export const TOOLS: Item[] = [
     description: "Escape special characters in URLs.",
     category: "tool-dev",
     icon: Code2,
-    path: "/tools/url-encoder"
+    path: "/tools/url-encoder",
   },
   {
     id: "uuid-generator",
@@ -181,7 +254,7 @@ export const TOOLS: Item[] = [
     description: "Generate random UUIDs (v4).",
     category: "tool-dev",
     icon: Code2,
-    path: "/tools/uuid-generator"
+    path: "/tools/uuid-generator",
   },
   {
     id: "jwt-decoder",
@@ -189,7 +262,7 @@ export const TOOLS: Item[] = [
     description: "Read the payload of JSON Web Tokens.",
     category: "tool-dev",
     icon: Code2,
-    path: "/tools/jwt-decoder"
+    path: "/tools/jwt-decoder",
   },
   {
     id: "regex-tester",
@@ -197,7 +270,7 @@ export const TOOLS: Item[] = [
     description: "Test regular expressions against text.",
     category: "tool-dev",
     icon: Code2,
-    path: "/tools/regex-tester"
+    path: "/tools/regex-tester",
   },
 
   // Image Tools
@@ -207,7 +280,7 @@ export const TOOLS: Item[] = [
     description: "Convert image formats instantly.",
     category: "tool-image",
     icon: ImageIcon,
-    path: "/tools/png-jpg"
+    path: "/tools/png-jpg",
   },
   {
     id: "image-resizer",
@@ -215,7 +288,7 @@ export const TOOLS: Item[] = [
     description: "Resize images to specific dimensions.",
     category: "tool-image",
     icon: ImageIcon,
-    path: "/tools/image-resizer"
+    path: "/tools/image-resizer",
   },
   {
     id: "image-compressor",
@@ -223,7 +296,7 @@ export const TOOLS: Item[] = [
     description: "Reduce image file size.",
     category: "tool-image",
     icon: ImageIcon,
-    path: "/tools/image-compressor"
+    path: "/tools/image-compressor",
   },
 
   // Calc Tools
@@ -233,7 +306,7 @@ export const TOOLS: Item[] = [
     description: "Calculate exact age from birthdate.",
     category: "tool-calc",
     icon: Calculator,
-    path: "/tools/age-calculator"
+    path: "/tools/age-calculator",
   },
   {
     id: "percentage-calculator",
@@ -241,18 +314,22 @@ export const TOOLS: Item[] = [
     description: "Simple percentage calculations.",
     category: "tool-calc",
     icon: Calculator,
-    path: "/tools/percentage-calculator"
-  }
+    path: "/tools/percentage-calculator",
+  },
 ];
 
 export const ALL_ITEMS = [...GAMES, ...TOOLS];
 
 export function getItemById(id: string) {
-  return ALL_ITEMS.find(item => item.id === id);
+  return ALL_ITEMS.find((item) => item.id === id);
 }
 
-export function getRelatedItems(currentId: string, category: Category, limit = 3) {
-  return ALL_ITEMS
-    .filter(item => item.category === category && item.id !== currentId)
-    .slice(0, limit);
+export function getRelatedItems(
+  currentId: string,
+  category: Category,
+  limit = 3
+) {
+  return ALL_ITEMS.filter(
+    (item) => item.category === category && item.id !== currentId
+  ).slice(0, limit);
 }
