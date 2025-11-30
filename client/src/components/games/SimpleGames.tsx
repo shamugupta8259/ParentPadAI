@@ -2,12 +2,20 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { RefreshCw, Circle, X } from "lucide-react";
+import Tetris from "./Tetris";
+import Sudoku from "./Sudoku";
+import Chess from "./Chess";
+import StackTower from "./StackTower";
+import Wordle from "./Wordle";
+import TicTacToeGame from "./TicTacToe";
+import Solitaire from "./Solitaire";
+import ConnectFour from "./ConnectFour";
 
 // --- Tic Tac Toe ---
 export function TicTacToe() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
-  
+
   const winner = calculateWinner(board);
   const isDraw = !winner && board.every(Boolean);
 
@@ -59,9 +67,14 @@ export function TicTacToe() {
 
 function calculateWinner(squares: any[]) {
   const lines = [
-    [0, 1, 2], [3, 4, 5], [6, 7, 8],
-    [0, 3, 6], [1, 4, 7], [2, 5, 8],
-    [0, 4, 8], [2, 4, 6]
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
@@ -80,9 +93,9 @@ export function RockPaperScissors() {
   const [score, setScore] = useState({ user: 0, computer: 0 });
 
   const choices = [
-    { id: 'rock', icon: '🪨' },
-    { id: 'paper', icon: '📄' },
-    { id: 'scissors', icon: '✂️' }
+    { id: "rock", icon: "🪨" },
+    { id: "paper", icon: "📄" },
+    { id: "scissors", icon: "✂️" },
   ];
 
   const play = (choice: string) => {
@@ -93,15 +106,15 @@ export function RockPaperScissors() {
     if (choice === computer) {
       setResult("Draw!");
     } else if (
-      (choice === 'rock' && computer === 'scissors') ||
-      (choice === 'paper' && computer === 'rock') ||
-      (choice === 'scissors' && computer === 'paper')
+      (choice === "rock" && computer === "scissors") ||
+      (choice === "paper" && computer === "rock") ||
+      (choice === "scissors" && computer === "paper")
     ) {
       setResult("You Win!");
-      setScore(s => ({ ...s, user: s.user + 1 }));
+      setScore((s) => ({ ...s, user: s.user + 1 }));
     } else {
       setResult("You Lose!");
-      setScore(s => ({ ...s, computer: s.computer + 1 }));
+      setScore((s) => ({ ...s, computer: s.computer + 1 }));
     }
   };
 
@@ -136,10 +149,43 @@ export function RockPaperScissors() {
 
       {userChoice && (
         <div className="flex gap-8 text-sm text-muted-foreground">
-          <div>You chose: {choices.find(c => c.id === userChoice)?.icon}</div>
-          <div>CPU chose: {choices.find(c => c.id === computerChoice)?.icon}</div>
+          <div>You chose: {choices.find((c) => c.id === userChoice)?.icon}</div>
+          <div>
+            CPU chose: {choices.find((c) => c.id === computerChoice)?.icon}
+          </div>
         </div>
       )}
+    </div>
+  );
+}
+
+export function PopularGamesCollection() {
+  return (
+    <div className="flex flex-col gap-10">
+      <h1 className="text-2xl font-bold mb-4">Most Popular Games</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <Card>
+          <Tetris />
+        </Card>
+        <Card>
+          <Sudoku />
+        </Card>
+        <Card>
+          <Chess />
+        </Card>
+        <Card>
+          <StackTower />
+        </Card>
+        <Card>
+          <Wordle />
+        </Card>
+        <Card>
+          <TicTacToeGame />
+        </Card>
+        <Card>
+          <ConnectFour />
+        </Card>
+      </div>
     </div>
   );
 }
